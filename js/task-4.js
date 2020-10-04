@@ -1,6 +1,5 @@
-const actions = document.querySelectorAll('#counter button');
-const decrement = actions[0];
-const increment = actions[1];
+const decrement = document.querySelector('[data-action="decrement"]');
+const increment = document.querySelector('[data-action="increment"]');
 const value = document.querySelector('#value');
 let counterValue = 0;
 
