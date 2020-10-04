@@ -1,12 +1,21 @@
 const inputEl = document.querySelector('#validation-input');
-const inputLength = inputEl.dataset.length;
-inputEl.style.border = '3px solid #bdbdbd';
+const inputLength = Number(inputEl.dataset.length);
 
-inputEl.addEventListener('input', onValidationInput);
+inputEl.addEventListener('blur', onValidationInput);
+
 function onValidationInput(event) {
-  if ((inputLength = event.currentTarget.value.length)) {
-    inputEl.style.borderColor = '#4caf50';
+  const number = event.currentTarget.value.length;
+
+  if (inputLength === number) {
+    inputEl.classList.add('valid');
+    inputEl.classList.remove('invalid');
   } else {
-    inputEl.style.borderColor = '#f44336';
+    inputEl.classList.add('invalid');
+    inputEl.classList.remove('valid');
   }
+  // if ((inputLength = event.currentTarget.value.length)) {
+  //   inputEl.style.borderColor = '#4caf50';
+  // } else {
+  //   inputEl.style.borderColor = '#f44336';
+  // }
 }
