@@ -1,12 +1,14 @@
-const inputEl = document.querySelector('#name-input');
-const name = document.querySelector('h1 > span');
-
-inputEl.addEventListener('input', onInputChange);
-
-function onInputChange(event) {
-  if (event.currentTarget.value) {
-    name.textContent = event.currentTarget.value;
-  } else {
-    name.textContent = 'незнакомец';
-  }
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
+
+const changeColorButton = document.querySelector('.change-color');
+const colorSpan = document.querySelector('.color');
+
+changeColorButton.addEventListener('click', () => {
+  const newColor = getRandomHexColor();
+  document.body.style.backgroundColor = newColor;
+  colorSpan.textContent = newColor;
+});

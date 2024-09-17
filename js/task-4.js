@@ -1,16 +1,27 @@
-const decrement = document.querySelector('[data-action="decrement"]');
-const increment = document.querySelector('[data-action="increment"]');
-const value = document.querySelector('#value');
-let counterValue = 0;
+const loginFormEl = document.querySelector('.login-form');
 
-decrement.addEventListener('click', onDecrementButtonClick);
-increment.addEventListener('click', onIncrementButtonClick);
+function onSubmitForm(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const email = form.elements.email.value.trim();
+  const password = form.elements.password.value.trim();
 
-function onIncrementButtonClick() {
-  value.textContent = counterValue;
-  return (counterValue += 1);
+  if (!email || !password) {
+    alert('All form fields must be filled in');
+    return;
+  }
+
+  const formData = {
+    email: email,
+    password: password
+  };
+
+  console.log(formData);
+
+  form.reset();
 }
-function onDecrementButtonClick() {
-  value.textContent = counterValue;
-  return (counterValue -= 1);
+
+if (loginFormEl) {
+  loginFormEl.addEventListener('submit', onSubmitForm);
 }
